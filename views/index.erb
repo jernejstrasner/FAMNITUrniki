@@ -1,8 +1,9 @@
 <h1>FAMNIT Urniki</h1>
 
 <% @programi.each do |program| %>
+	<h3><%=program['name']%></h3>
 	<ul>
-	<% program.each do |predmet| %>
+	<% program['data'].each do |predmet| %>
 		<li><a href="<%=@rel_url+predmet['course_id']%>"><%=predmet['name']%></a></li>
 	<% end %>
 	</ul>

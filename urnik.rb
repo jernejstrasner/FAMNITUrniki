@@ -10,14 +10,21 @@ require 'tzinfo'
 get '/' do
   # Seznam predmetov po programih
   # Zaenkrat samo za RIN
-  url = 'http://www.famnit.upr.si/sl/studentske-strani/urniki_wise/lib/courses_helper.php?type=program&program_id=1'
-  res = open(url).read
-  
+  ids = {
+    1 => 'Ra&#x10D;unalni&scaron;tvo in informatika (dodiplomski)',
+    2 => 'Matematika (dodiplomski)',
+    3 => 'Matematika v ekonomiji in financah (dodiplomski)',
+    9 => 'Matematika in ra&#x10D;unalni&scaron;tvo (UP PEF, dodiplomski)',
+    11 => 'Ra&#x10D;unalni&scaron;tvo in informatika (magistrski)',
+    10 => 'Matemati&#x10D;ne znanosti (magistrski)'
+  }
   @programi = Array.new
-  @programi << JSON.parse(res)['result'][2]
-  
+  ids.each do |id, name|
+    url = 'http://www.famnit.upr.si/sl/studentske-strani/urniki_wise/lib/courses_helper.php?type=program&program_id=' + id.to_s
+    res = open(url).read
+    @programi << {'name' => name, 'data' => JSON.parse(res)['result'][2]}
+  end  
   @rel_url = uri('predmet/').to_s.sub('http', 'webcal')
-  
   erb :index
 end
 
@@ -25,17 +32,8 @@ get '/predmet/:id' do |id|
   urnikURL = "http://www.famnit.upr.si/sl/studentske-strani/urniki_wise/courses.php"
 
   parameters = {
-    # 'pagename' => 'courses',
-    # 'program_index' => 9,
-    # 'courses_index' => 9,
     'courses_values' => id,
     'show_week' => 0,
-    # 'with_groups' => 1,
-    # 'groups_in_cells' => 1,
-    # 'show_lastchange' => 0,
-    # 'print_selection_details' => 1,
-    # 'show_week_number' => 0,
-    # 'hide_branch_code' => 1
   }
   result = Net::HTTP.post_form(URI.parse(urnikURL), parameters)
   
