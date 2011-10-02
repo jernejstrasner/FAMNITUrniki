@@ -41,7 +41,7 @@ get '/predmet/:id' do |id|
   
   doc = Nokogiri::HTML(result.body)
   
-  predmet = doc.at_css('span.caption').inner_html
+  predmet = doc.at_css('span.caption').inner_html.strip
   
   cal = RiCal.Calendar do |cal|
     cal.default_tzid = 'Europe/Ljubljana'
