@@ -11,12 +11,12 @@ get '/' do
   # Seznam predmetov po programih
   # Zaenkrat samo za RIN
   ids = {
-    1 => 'Ra&#x10D;unalni&scaron;tvo in informatika (dodiplomski)',
-    2 => 'Matematika (dodiplomski)',
-    3 => 'Matematika v ekonomiji in financah (dodiplomski)',
-    9 => 'Matematika in ra&#x10D;unalni&scaron;tvo (UP PEF, dodiplomski)',
-    11 => 'Ra&#x10D;unalni&scaron;tvo in informatika (magistrski)',
-    10 => 'Matemati&#x10D;ne znanosti (magistrski)'
+    3 => 'Ra&#x10D;unalni&scaron;tvo in informatika (dodiplomski)',
+    1 => 'Matematika (dodiplomski)',
+    2 => 'Matematika v ekonomiji in financah (dodiplomski)',
+    10 => 'Matematika in ra&#x10D;unalni&scaron;tvo (UP PEF, dodiplomski)',
+    9 => 'Ra&#x10D;unalni&scaron;tvo in informatika (magistrski)',
+    8 => 'Matemati&#x10D;ne znanosti (magistrski)'
   }
   @programi = Array.new
   ids.each do |id, name|
