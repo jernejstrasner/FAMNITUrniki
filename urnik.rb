@@ -9,14 +9,20 @@ require 'tzinfo'
 
 get '/' do
   # Seznam predmetov po programih
-  # Zaenkrat samo za RIN
   ids = {
     3 => 'Ra&#x10D;unalni&scaron;tvo in informatika (dodiplomski)',
     1 => 'Matematika (dodiplomski)',
     2 => 'Matematika v ekonomiji in financah (dodiplomski)',
-    10 => 'Matematika in ra&#x10D;unalni&scaron;tvo (UP PEF, dodiplomski)',
-    9 => 'Ra&#x10D;unalni&scaron;tvo in informatika (magistrski)',
-    8 => 'Matemati&#x10D;ne znanosti (magistrski)'
+    10 => 'Ra&#x10D;unalni&scaron;tvo in informatika (magistrski)',
+    12 => 'Matematične znanosti (magistrski)',
+    7 => 'Matematika EN (dodiplomski)',
+    12 => 'Matemati&#x10D;ne znanosti (magistrski)',
+    4 => 'Biodiverziteta',
+    6 => 'Bioinformatika (dodiplomski)',
+    9 => 'Biopsihologija (dodiplomski)',
+    8 => 'Aplikativna kineziologija (dodiplomski)',
+    5 => 'Sredozemsko kmetijstvo (dodiplomski)',
+    11 => 'Varstvo narave (magistrski)'
   }
   @programi = Array.new
   ids.each do |id, name|
