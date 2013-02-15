@@ -20,7 +20,7 @@ get '/' do
   }
   @programi = Array.new
   ids.each do |id, name|
-    url = 'http://www.famnit.upr.si/sl/studentske-strani/urniki_wise/lib/courses_helper.php?type=program&program_id=' + id.to_s
+    url = 'http://www.famnit.upr.si/sl/studenti/urniki_wise/lib/courses_helper.php?type=program&program_id=' + id.to_s
     res = open(url).read
     @programi << {'name' => name, 'data' => JSON.parse(res)['result'][2]}
   end  
@@ -29,7 +29,7 @@ get '/' do
 end
 
 get '/predmet/:id' do |id|
-  urnikURL = "http://www.famnit.upr.si/sl/studentske-strani/urniki_wise/courses.php"
+  urnikURL = "http://www.famnit.upr.si/sl/studenti/urniki_wise/courses.php"
 
   parameters = {
     'courses_values' => id,
